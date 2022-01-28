@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 const FeatureContainer = styled.div`
   width: 80vw;
@@ -35,6 +35,7 @@ const TabButton = styled.div`
     props.index === props.clickedButton ? "white" : "black"};
   background-color: ${(props) =>
     props.index === props.clickedButton ? "#000080" : "#dcdcdc"};
+  transition: 0.2s;
 `;
 
 const Tab = () => {
