@@ -35,7 +35,7 @@ const TagInput = styled.input`
   border: none;
 `;
 const TagDiv = styled.div`
-  max-width: 100px;
+  width: 10vw;
   height: 70%;
   display: flex;
   justify-content: space-around;
@@ -47,6 +47,7 @@ const TagDiv = styled.div`
   border-radius: 15px;
   color: white;
   background-color: #000080;
+  word-break: break-all;
 `;
 const CloseIcon = styled.div`
   margin-left: 2px;
@@ -56,7 +57,9 @@ const Tag = () => {
   const [TagText, setTagText] = useState("");
 
   const addTag = (tag) => {
-    return setCurrentTags([...currentTags, tag]);
+    if (tag !== "") {
+      return setCurrentTags([...currentTags, tag]);
+    }
   };
   const removeTag = (index) => {
     let currentTagsCopy = currentTags.slice();
