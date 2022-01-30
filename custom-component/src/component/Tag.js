@@ -51,11 +51,17 @@ const TagTextElement = styled.div`
   font-size: 16px;
   margin-left: 5px;
 `;
-const CloseIcon = styled.div`
+const CloseIconDiv = styled.div`
   display: inline-block;
   margin-left: 5px;
   margin-right: 5px;
 `;
+const CloseIconImg = styled.img`
+  width: 20px;
+  object-fit: cover;
+`;
+
+//icon에만 색깔 입힐 방법은?
 const Tag = () => {
   const [currentTags, setCurrentTags] = useState([]);
   const [TagText, setTagText] = useState("");
@@ -80,7 +86,9 @@ const Tag = () => {
           {currentTags.map((currentTag, index) => (
             <TagDiv key={index}>
               <TagTextElement>{currentTag}</TagTextElement>
-              <CloseIcon onClick={() => removeTag(index)}>&otimes;</CloseIcon>
+              <CloseIconDiv onClick={() => removeTag(index)}>
+                <CloseIconImg src="./delete.png" />
+              </CloseIconDiv>
             </TagDiv>
           ))}
           <TagInput
