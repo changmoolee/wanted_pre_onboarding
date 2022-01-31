@@ -14,8 +14,10 @@ const Feature = styled.div`
   width: 100%;
   height: 80%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  font-size: 16px;
 `;
 const TabContainer = styled.div`
   width: 100%;
@@ -23,6 +25,8 @@ const TabContainer = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  margin-bottom: 100px;
+  background-color: #dcdcdc;
 `;
 const TabButton = styled.div`
   width: 30%;
@@ -31,8 +35,7 @@ const TabButton = styled.div`
   justify-content: flex-start;
   align-items: center;
   font-size: 16px;
-  color: ${(props) =>
-    props.index === props.clickedButton ? "white" : "black"};
+  color: ${(props) => (props.index === props.clickedButton ? "white" : "gray")};
   background-color: ${(props) =>
     props.index === props.clickedButton ? "#000080" : "#dcdcdc"};
   transition: 0.2s;
@@ -40,6 +43,7 @@ const TabButton = styled.div`
 
 const Tab = () => {
   const tabCollection = ["Tab1", "Tab2", "Tab3"];
+  const tabMenu = ["ONE", "TWO", "THREE"];
 
   const [clickedButton, setClickedButton] = useState(0);
 
@@ -65,6 +69,7 @@ const Tab = () => {
             );
           })}
         </TabContainer>
+        Tab menu {tabMenu[clickedButton]}
       </Feature>
     </FeatureContainer>
   );

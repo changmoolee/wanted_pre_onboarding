@@ -42,7 +42,7 @@ const TagDiv = styled.div`
   align-items: center;
   margin-left: 10px;
   border: 1px black solid;
-  border-radius: 15px;
+  border-radius: 10px;
   color: white;
   background-color: #000080;
 `;

@@ -26,7 +26,7 @@ const ModalContainer = styled.div`
 `;
 const ModalIconContainer = styled.div`
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   width: 100%;
   height: 15%;
 `;
@@ -43,6 +43,7 @@ const ModalTextContainer = styled.div`
   justify-content: center;
   width: 100%;
   height: 85%;
+  color: #000080;
   font-size: 24px;
 `;
 
@@ -63,12 +64,13 @@ const Feature = styled.div`
   align-items: center;
 `;
 const ModalButton = styled.div`
-  width: 200px;
-  height: 50px;
+  width: 120px;
+  height: 60px;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 20px;
+  border-radius: 30px;
+  font-size: 16px;
   color: white;
   background-color: #000080;
 `;
