@@ -26,8 +26,10 @@ const ToggleContainer = styled.div`
   align-items: center;
   margin-bottom: 10px;
   border-radius: 20px;
-  background-color: ${(props) => (props.isToggleOn ? "#dcdcdc" : "#000080")};
-  transition: 0.3s;
+  background-color: ${(props) => (props.isToggleOn ? "#dcdcdc" : "none")};
+  box-shadow: ${(props) =>
+    props.isToggleOn ? "none" : "100px 0 0 0 #000080 inset"};
+  transition: 0.6s;
 `;
 
 const ToggleBall = styled.div`
@@ -38,7 +40,7 @@ const ToggleBall = styled.div`
     props.isToggleOn ? "translate(20% ,0%)" : "translate(170% ,0%)"};
   border-radius: 50px;
   background-color: white;
-  transition: 0.3s;
+  transition: 0.6s;
 `;
 
 const Toggle = () => {
