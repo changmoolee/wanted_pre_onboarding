@@ -17,18 +17,17 @@ const Feature = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 1px black solid;
 `;
 const ToggleContainer = styled.div`
-  width: 6%;
-  height: 20%;
+  width: 80px;
+  height: 40px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   margin-bottom: 10px;
   border-radius: 20px;
   background-color: ${(props) => (props.isToggleOn ? "#dcdcdc" : "#000080")};
-  transition: 1s;
+  transition: 0.3s;
 `;
 
 const ToggleBall = styled.div`
@@ -39,7 +38,7 @@ const ToggleBall = styled.div`
     props.isToggleOn ? "translate(20% ,0%)" : "translate(170% ,0%)"};
   border-radius: 50px;
   background-color: white;
-  transition: 1s;
+  transition: 0.3s;
 `;
 
 const Toggle = () => {

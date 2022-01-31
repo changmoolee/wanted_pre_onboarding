@@ -21,20 +21,31 @@ const FeatureSpace = styled.div`
   width: 100%;
   min-height: 40%;
 `;
+
 const AutoCompleteContainer = styled.div`
   width: 70%;
-  height: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: ${(props) =>
+    props.inputText === "" ? "none" : "0px 3px 3px 3px rgba(0, 0, 0, 0.1)"};
+  border-radius: 10px;
+`;
+
+const AutoCompleteInputContainer = styled.div`
+  width: 100%;
+  height: 25px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  padding: 1px;
-  border: 0.5px gray solid;
+  box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
+  margin-top: -1px;
 `;
 
 const AutoCompleteInput = styled.input`
   width: 95%;
-  height: 95%;
+  height: 90%;
   display: flex;
   font-size: 16px;
   margin-left: 5px;
@@ -58,28 +69,21 @@ const AutoCompleteCloseIcon = styled.div`
   border: none;
   border-radius: 10px;
 `;
-const SearchResultContainer = styled.div`
-  width: 70%;
-  display: ${(props) => (props.inputText === "" ? "none" : "flex")};
-  justify-content: flex-start;
-  align-items: center;
-  border: 0.5px gray solid;
-  border-radius: 10px;
-  z-index: 2;
-`;
 
 const SearchResultCollection = styled.ul`
   width: 100%;
-  display: flex;
+  display: ${(props) => (props.inputText === "" ? "none" : "flex")};
   flex-direction: column;
-  margin: 10px;
   padding: 0px;
+  margin: 5px 0px 5px 0px;
 `;
 const SearchResult = styled.li`
-  width: 100%;
+  width: 98%;
   display: flex;
+  margin: 2px 0px 2px 5px;
   font-size: 16px;
   cursor: pointer;
+
   &:hover {
     background-color: #dcdcdc;
   }
@@ -113,18 +117,18 @@ const AutoComplete = () => {
       AutoComplete
       <Feature>
         <FeatureSpace />
-        <AutoCompleteContainer>
-          <AutoCompleteInput
-            placeholder="Please browse here"
-            value={inputText}
-            onChange={(e) => currentInputText(e)}
-          ></AutoCompleteInput>
-          <AutoCompleteCloseIcon onClick={() => eraseInput()}>
-            &times;
-          </AutoCompleteCloseIcon>
-        </AutoCompleteContainer>
-        <SearchResultContainer inputText={inputText}>
-          <SearchResultCollection>
+        <AutoCompleteContainer inputText={inputText}>
+          <AutoCompleteInputContainer>
+            <AutoCompleteInput
+              placeholder="Please browse here"
+              value={inputText}
+              onChange={(e) => currentInputText(e)}
+            ></AutoCompleteInput>
+            <AutoCompleteCloseIcon onClick={() => eraseInput()}>
+              &times;
+            </AutoCompleteCloseIcon>
+          </AutoCompleteInputContainer>
+          <SearchResultCollection inputText={inputText}>
             {data.map((data, index) => {
               if (data.includes(inputText)) {
                 return (
@@ -138,7 +142,7 @@ const AutoComplete = () => {
               }
             })}
           </SearchResultCollection>
-        </SearchResultContainer>
+        </AutoCompleteContainer>
       </Feature>
     </FeatureContainer>
   );
