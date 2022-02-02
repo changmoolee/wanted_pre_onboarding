@@ -26,9 +26,9 @@ const ToggleContainer = styled.div`
   align-items: center;
   margin-bottom: 10px;
   border-radius: 20px;
-  background-color: ${(props) => (props.isToggleOn ? "#dcdcdc" : "none")};
+  background-color: ${(props) => (props.isToggleOn ? "none" : "#dcdcdc")};
   box-shadow: ${(props) =>
-    props.isToggleOn ? "none" : "100px 0 0 0 #000080 inset"};
+    props.isToggleOn ? "100px 0 0 0 #000080 inset" : "none"};
   transition: 0.6s;
 `;
 
@@ -37,7 +37,7 @@ const ToggleBall = styled.div`
   width: 35%;
   height: 70%;
   transform: ${(props) =>
-    props.isToggleOn ? "translate(20% ,0%)" : "translate(170% ,0%)"};
+    props.isToggleOn ? "translate(170% ,0%)" : "translate(20% ,0%)"};
   border-radius: 50px;
   background-color: white;
   transition: 0.6s;
@@ -60,7 +60,7 @@ const Toggle = () => {
         >
           <ToggleBall isToggleOn={isToggleOn}></ToggleBall>
         </ToggleContainer>
-        {isToggleOn ? "Toggle Switch OFF" : "Toggle Switch ON"}
+        {isToggleOn ? "Toggle Switch ON" : "Toggle Switch OFF"}
       </Feature>
     </FeatureContainer>
   );

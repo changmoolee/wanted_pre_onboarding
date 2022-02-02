@@ -139,6 +139,8 @@ const AutoComplete = () => {
                     {data}
                   </SearchResult>
                 );
+              } else {
+                return null;
               }
             })}
           </SearchResultCollection>
