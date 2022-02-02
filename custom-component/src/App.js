@@ -17,10 +17,10 @@ const Container = styled.div`
 function App() {
   return (
     <Container>
+      <Toggle />
       <Modal />
       <Tab />
       <Tag />
-      <Toggle />
       <AutoComplete />
       <ClickToEdit />
     </Container>
