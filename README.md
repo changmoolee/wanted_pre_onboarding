@@ -3,9 +3,9 @@
 ## styled-component를 사용한 이유
 > 컴포넌트 단위로 캡슐화하여 유지보수가 쉽고,<br> 이벤트에 따른 조건부 스타일링을 구현하기 편리하기 때문입니다.
 ## Toggle
-> switch on, off에 따른 상태를 정의하고,<br> 상태에 따라 조건부 스타일링을 주었습니다.
+> Toggle의 switch on, off에 따른 상태를 정의하고,<br> 상태에 따라 조건부 스타일링을 주었습니다.
 ## Modal
-> modal on, off에 따른 상태를 정의하고,<br> stopPropagation 메서드를 사용하여 이벤트 버블링 전파를 방지하여 클릭이벤트 영역을 정하였습니다.
+> modal on, off에 따른 상태를 정의하고,<br> stopPropagation 메서드를 사용하여 이벤트 버블링 전파를 방지하여 modal close 클릭 이벤트 영역을 설정하였습니다.
 ## Tab
 > 클릭한 Tap에 따른 상태를 정의하고 <br> 클릭한 Tap, 클릭하지 않은 나머지 Tap에 따른 조건부 스타일링을 주었습니다.
 ## Tag
