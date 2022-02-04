@@ -130,7 +130,7 @@ const AutoComplete = () => {
           </AutoCompleteInputContainer>
           <SearchResultCollection inputText={inputText}>
             {data.map((data, index) => {
-              if (data.includes(inputText)) {
+              if (data.toLowerCase().includes(inputText.toLowerCase())) {
                 return (
                   <SearchResult
                     key={index}
