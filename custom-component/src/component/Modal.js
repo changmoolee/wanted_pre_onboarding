@@ -43,7 +43,7 @@ const ModalTextContainer = styled.div`
   justify-content: center;
   width: 100%;
   height: 85%;
-  color: #000080;
+  color: #4a19cd;
   font-size: 24px;
 `;
 
@@ -72,7 +72,7 @@ const ModalButton = styled.div`
   border-radius: 30px;
   font-size: 16px;
   color: white;
-  background-color: #000080;
+  background-color: #4a19cd;
 `;
 
 const Modal = () => {

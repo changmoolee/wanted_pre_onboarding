@@ -37,7 +37,7 @@ const TabButton = styled.div`
   font-size: 16px;
   color: ${(props) => (props.index === props.clickedButton ? "white" : "gray")};
   background-color: ${(props) =>
-    props.index === props.clickedButton ? "#000080" : "#dcdcdc"};
+    props.index === props.clickedButton ? "#4a19cd" : "#dcdcdc"};
   transition: 0.2s;
 `;
 
