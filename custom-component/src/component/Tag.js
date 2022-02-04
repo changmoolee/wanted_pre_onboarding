@@ -44,7 +44,7 @@ const TagDiv = styled.div`
   border: 1px black solid;
   border-radius: 10px;
   color: white;
-  background-color: #000080;
+  background-color: #4a19cd;
 `;
 const TagTextElement = styled.div`
   display: inline;

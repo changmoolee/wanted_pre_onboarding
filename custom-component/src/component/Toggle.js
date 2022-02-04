@@ -28,7 +28,7 @@ const ToggleContainer = styled.div`
   border-radius: 20px;
   background-color: ${(props) => (props.isToggleOn ? "none" : "#dcdcdc")};
   box-shadow: ${(props) =>
-    props.isToggleOn ? "100px 0 0 0 #000080 inset" : "none"};
+    props.isToggleOn ? "100px 0 0 0 #4a19cd inset" : "none"};
   transition: 0.6s;
 `;
 
