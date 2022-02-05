@@ -97,7 +97,7 @@ const Modal = () => {
       <FeatureContainer>
         Modal
         <Feature>
-          <ModalButton onClick={() => controlModal()}>open Modal</ModalButton>
+          <ModalButton onClick={() => controlModal()}> Open Modal</ModalButton>
         </Feature>
       </FeatureContainer>
     </>
