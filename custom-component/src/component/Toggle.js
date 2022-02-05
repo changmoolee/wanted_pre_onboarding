@@ -25,6 +25,14 @@ const ToggleContainer = styled.div`
   justify-content: flex-start;
   align-items: center;
   margin-bottom: 10px;
+`;
+const ToggleContainerShadow = styled.div`
+  width: 80px;
+  height: 40px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 10px;
   border-radius: 20px;
   background-color: ${(props) => (props.isToggleOn ? "none" : "#dcdcdc")};
   box-shadow: ${(props) =>
@@ -58,7 +66,9 @@ const Toggle = () => {
           onClick={() => controlToggle()}
           isToggleOn={isToggleOn}
         >
-          <ToggleBall isToggleOn={isToggleOn}></ToggleBall>
+          <ToggleContainerShadow isToggleOn={isToggleOn}>
+            <ToggleBall isToggleOn={isToggleOn}></ToggleBall>
+          </ToggleContainerShadow>
         </ToggleContainer>
         {isToggleOn ? "Toggle Switch ON" : "Toggle Switch OFF"}
       </Feature>
