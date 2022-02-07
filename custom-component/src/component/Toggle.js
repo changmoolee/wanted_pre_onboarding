@@ -37,19 +37,19 @@ const ToggleContainerShadow = styled.div`
   border-radius: 20px;
   background-color: ${(props) => (props.isToggleOn ? "none" : "#dcdcdc")};
   box-shadow: ${(props) =>
-    props.isToggleOn ? "100px 0 0 0 #4a19cd inset" : "none"};
-  transition: 0.6s;
+    props.isToggleOn ? "50px 0 0 0 #4a19cd inset" : "none"};
+  transition: 0.3s;
 `;
 
 const ToggleBall = styled.div`
   position: relative;
-  width: 35%;
-  height: 70%;
+  width: 30px;
+  height: 30px;
   transform: ${(props) =>
-    props.isToggleOn ? "translate(170% ,0%)" : "translate(20% ,0%)"};
+    props.isToggleOn ? "translate(45px ,0%)" : "translate(5px ,0%)"};
   border-radius: 50px;
   background-color: white;
-  transition: 0.6s;
+  transition: 0.3s;
 `;
 
 const Toggle = () => {

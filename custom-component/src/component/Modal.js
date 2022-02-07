@@ -80,17 +80,15 @@ const ModalButton = styled.div`
 const Modal = () => {
   const [isModalOpen, setModalOpen] = useState(false);
 
-  const controlModal = () => {
-    return setModalOpen(!isModalOpen);
-  };
-
   return (
     <>
       {isModalOpen ? (
-        <Wrapper onClick={() => controlModal()}>
+        <Wrapper onClick={() => setModalOpen(!isModalOpen)}>
           <ModalContainer onClick={(e) => e.stopPropagation()}>
             <ModalIconContainer>
-              <ModalIcon onClick={() => controlModal()}>&times;</ModalIcon>
+              <ModalIcon onClick={() => setModalOpen(!isModalOpen)}>
+                &times;
+              </ModalIcon>
             </ModalIconContainer>
             <ModalTextContainer>Hello CodeStates!</ModalTextContainer>
           </ModalContainer>
@@ -99,7 +97,10 @@ const Modal = () => {
       <FeatureContainer>
         Modal
         <Feature>
-          <ModalButton onClick={() => controlModal()}> Open Modal</ModalButton>
+          <ModalButton onClick={() => setModalOpen(!isModalOpen)}>
+            {" "}
+            Open Modal
+          </ModalButton>
         </Feature>
       </FeatureContainer>
     </>
