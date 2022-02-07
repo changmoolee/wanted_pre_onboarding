@@ -36,6 +36,7 @@ const ModalIcon = styled.div`
   align-items: center;
   margin-right: 10px;
   font-size: 36px;
+  cursor: pointer;
 `;
 const ModalTextContainer = styled.div`
   display: flex;
@@ -73,6 +74,7 @@ const ModalButton = styled.div`
   font-size: 16px;
   color: white;
   background-color: #4a19cd;
+  cursor: pointer;
 `;
 
 const Modal = () => {
