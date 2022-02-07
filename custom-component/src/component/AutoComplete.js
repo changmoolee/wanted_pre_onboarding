@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
 const FeatureContainer = styled.div`
@@ -28,7 +28,7 @@ const AutoCompleteContainer = styled.div`
   flex-direction: column;
   align-items: center;
   box-shadow: ${(props) =>
-    props.inputText === "" ? "none" : "0px 3px 3px 3px rgba(0, 0, 0, 0.1)"};
+    props.comboBoxOpened ? "0px 3px 3px 3px rgba(0, 0, 0, 0.1)" : "none"};
   border-radius: 10px;
 `;
 
@@ -72,10 +72,11 @@ const AutoCompleteCloseIcon = styled.div`
 
 const SearchResultCollection = styled.ul`
   width: 100%;
-  display: ${(props) => (props.inputText === "" ? "none" : "flex")};
+  display: ${(props) => (props.comboBoxOpened ? "flex" : "none")};
   flex-direction: column;
   padding: 0px;
   margin: 5px 0px 5px 0px;
+  background: white;
 `;
 const SearchResult = styled.li`
   width: 98%;
@@ -91,6 +92,8 @@ const SearchResult = styled.li`
 
 const AutoComplete = () => {
   const [inputText, setInputText] = useState("");
+  const [comboBoxOpened, setComboBoxOpended] = useState(false);
+
   const data = [
     "중고A급",
     "refurbished",
@@ -100,41 +103,41 @@ const AutoComplete = () => {
     "rock",
   ];
 
-  const currentInputText = (e) => {
-    setInputText(e.target.value);
-  };
-
-  const eraseInput = () => {
-    setInputText("");
-  };
-
-  const clickedPreviousData = (text) => {
-    return setInputText(text);
-  };
-
   return (
     <FeatureContainer>
       AutoComplete
       <Feature>
         <FeatureSpace />
-        <AutoCompleteContainer inputText={inputText}>
+        <AutoCompleteContainer comboBoxOpened={comboBoxOpened}>
           <AutoCompleteInputContainer>
             <AutoCompleteInput
               placeholder="Please browse here"
               value={inputText}
-              onChange={(e) => currentInputText(e)}
+              onFocus={() => setComboBoxOpended(true)}
+              onBlur={() => setTimeout(() => setComboBoxOpended(false), 100)}
+              // setTimeout 메서드를 사용한 이유 : 다른 태그의 click이벤트 호출 후, 해당 태그의 blur이벤트를 호출하기 위함
+              // blur 이벤트가 먼저 실행되고 click 이벤트가 발생하는 것을 깨달았다.
+              // 때문에, 0.1초의 타이머를 주어 다른 태그의 이벤트가 먼저 일어나고 blur이벤트가 발생할 수 있도록 하였다.
+              onChange={(e) => setInputText(e.target.value)}
             ></AutoCompleteInput>
-            <AutoCompleteCloseIcon onClick={() => eraseInput()}>
+            <AutoCompleteCloseIcon onClick={() => setInputText("")}>
               &times;
             </AutoCompleteCloseIcon>
           </AutoCompleteInputContainer>
-          <SearchResultCollection inputText={inputText}>
+          <SearchResultCollection comboBoxOpened={comboBoxOpened}>
             {data.map((data, index) => {
-              if (data.toLowerCase().includes(inputText.toLowerCase())) {
+              if (
+                data.toLowerCase().includes(inputText.toLowerCase()) &&
+                comboBoxOpened &&
+                inputText !== ""
+              ) {
                 return (
                   <SearchResult
                     key={index}
-                    onClick={() => clickedPreviousData(data)}
+                    onClick={() => {
+                      setInputText(data);
+                      setComboBoxOpended(false);
+                    }}
                   >
                     {data}
                   </SearchResult>

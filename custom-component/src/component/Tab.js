@@ -39,6 +39,7 @@ const TabButton = styled.div`
   background-color: ${(props) =>
     props.index === props.clickedButton ? "#4a19cd" : "#dcdcdc"};
   transition: 0.2s;
+  cursor: pointer;
 `;
 
 const Tab = () => {

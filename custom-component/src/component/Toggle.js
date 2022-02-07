@@ -25,6 +25,7 @@ const ToggleContainer = styled.div`
   justify-content: flex-start;
   align-items: center;
   margin-bottom: 10px;
+  cursor: pointer;
 `;
 const ToggleContainerShadow = styled.div`
   width: 80px;

@@ -93,7 +93,7 @@ const Tag = () => {
           ))}
           <TagInput
             onKeyPress={(e) => {
-              if (window.event.key === "Enter") {
+              if (e.key === "Enter") {
                 addTag(e.target.value);
                 setTagText("");
               }
