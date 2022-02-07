@@ -114,10 +114,7 @@ const AutoComplete = () => {
               placeholder="Please browse here"
               value={inputText}
               onFocus={() => setComboBoxOpended(true)}
-              onBlur={() => setTimeout(() => setComboBoxOpended(false), 100)}
-              // setTimeout 메서드를 사용한 이유 : 다른 태그의 click이벤트 호출 후, 해당 태그의 blur이벤트를 호출하기 위함
-              // blur 이벤트가 먼저 실행되고 click 이벤트가 발생하는 것을 깨달았다.
-              // 때문에, 0.1초의 타이머를 주어 다른 태그의 이벤트가 먼저 일어나고 blur이벤트가 발생할 수 있도록 하였다.
+              onBlur={() => setComboBoxOpended(false)}
               onChange={(e) => setInputText(e.target.value)}
             ></AutoCompleteInput>
             <AutoCompleteCloseIcon onClick={() => setInputText("")}>
@@ -134,7 +131,7 @@ const AutoComplete = () => {
                 return (
                   <SearchResult
                     key={index}
-                    onClick={() => {
+                    onMouseDown={() => {
                       setInputText(data);
                       setComboBoxOpended(false);
                     }}
