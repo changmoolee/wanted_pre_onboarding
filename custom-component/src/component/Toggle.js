@@ -35,9 +35,12 @@ const ToggleContainerShadow = styled.div`
   align-items: center;
   margin-bottom: 10px;
   border-radius: 20px;
-  background-color: ${(props) => (props.isToggleOn ? "none" : "#dcdcdc")};
-  box-shadow: ${(props) =>
-    props.isToggleOn ? "50px 0 0 0 #4a19cd inset" : "none"};
+  background: #dcdcdc;
+  background: ${(props) =>
+    props.isToggleOn
+      ? "linear-gradient(to right, #4a19cd 50%, #dcdcdc 50%) left"
+      : "linear-gradient(to right, #4a19cd 50%, #dcdcdc 50%) right"};
+  background-size: 200%;
   transition: 0.3s;
 `;
 

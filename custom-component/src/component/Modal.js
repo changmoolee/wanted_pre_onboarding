@@ -98,7 +98,6 @@ const Modal = () => {
         Modal
         <Feature>
           <ModalButton onClick={() => setModalOpen(!isModalOpen)}>
-            {" "}
             Open Modal
           </ModalButton>
         </Feature>
