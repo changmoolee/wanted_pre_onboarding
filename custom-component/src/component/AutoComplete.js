@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 const FeatureContainer = styled.div`
@@ -28,7 +28,7 @@ const AutoCompleteContainer = styled.div`
   flex-direction: column;
   align-items: center;
   box-shadow: ${(props) =>
-    props.comboBoxOpened ? "0px 3px 3px 3px rgba(0, 0, 0, 0.1)" : "none"};
+    props.inputText === "" ? "none" : "0px 3px 3px 3px rgba(0, 0, 0, 0.1)"};
   border-radius: 10px;
 `;
 
@@ -72,11 +72,10 @@ const AutoCompleteCloseIcon = styled.div`
 
 const SearchResultCollection = styled.ul`
   width: 100%;
-  display: ${(props) => (props.comboBoxOpened ? "flex" : "none")};
+  display: ${(props) => (props.inputText === "" ? "none" : "flex")};
   flex-direction: column;
   padding: 0px;
   margin: 5px 0px 5px 0px;
-  background: white;
 `;
 const SearchResult = styled.li`
   width: 98%;
@@ -84,7 +83,6 @@ const SearchResult = styled.li`
   margin: 2px 0px 2px 5px;
   font-size: 16px;
   cursor: pointer;
-
   &:hover {
     background-color: #dcdcdc;
   }
@@ -92,8 +90,6 @@ const SearchResult = styled.li`
 
 const AutoComplete = () => {
   const [inputText, setInputText] = useState("");
-  const [comboBoxOpened, setComboBoxOpended] = useState(false);
-
   const data = [
     "중고A급",
     "refurbished",
@@ -103,38 +99,41 @@ const AutoComplete = () => {
     "rock",
   ];
 
+  const currentInputText = (e) => {
+    setInputText(e.target.value);
+  };
+
+  const eraseInput = () => {
+    setInputText("");
+  };
+
+  const clickedPreviousData = (text) => {
+    return setInputText(text);
+  };
+
   return (
     <FeatureContainer>
       AutoComplete
       <Feature>
         <FeatureSpace />
-        <AutoCompleteContainer comboBoxOpened={comboBoxOpened}>
+        <AutoCompleteContainer inputText={inputText}>
           <AutoCompleteInputContainer>
             <AutoCompleteInput
               placeholder="Please browse here"
               value={inputText}
-              onFocus={() => setComboBoxOpended(true)}
-              onBlur={() => setComboBoxOpended(false)}
-              onChange={(e) => setInputText(e.target.value)}
+              onChange={(e) => currentInputText(e)}
             ></AutoCompleteInput>
-            <AutoCompleteCloseIcon onClick={() => setInputText("")}>
+            <AutoCompleteCloseIcon onClick={() => eraseInput()}>
               &times;
             </AutoCompleteCloseIcon>
           </AutoCompleteInputContainer>
-          <SearchResultCollection comboBoxOpened={comboBoxOpened}>
+          <SearchResultCollection inputText={inputText}>
             {data.map((data, index) => {
-              if (
-                data.toLowerCase().includes(inputText.toLowerCase()) &&
-                comboBoxOpened &&
-                inputText !== ""
-              ) {
+              if (data.toLowerCase().includes(inputText.toLowerCase())) {
                 return (
                   <SearchResult
                     key={index}
-                    onMouseDown={() => {
-                      setInputText(data);
-                      setComboBoxOpended(false);
-                    }}
+                    onClick={() => clickedPreviousData(data)}
                   >
                     {data}
                   </SearchResult>
