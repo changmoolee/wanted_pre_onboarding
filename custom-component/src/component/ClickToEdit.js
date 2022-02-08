@@ -69,11 +69,17 @@ const ClickToEdit = () => {
         <EditContainer>
           <EditNameContainer>
             이름
-            <EditInput onBlur={(e) => editNameInfo(e.target.value)} />
+            <EditInput
+              defaultValue={currentNameInfo}
+              onBlur={(e) => editNameInfo(e.target.value)}
+            />
           </EditNameContainer>
           <EditAgeContainer>
             나이
-            <EditInput onBlur={(e) => editAgeInfo(e.target.value)} />
+            <EditInput
+              defaultValue={currentAgeInfo}
+              onBlur={(e) => editAgeInfo(e.target.value)}
+            />
           </EditAgeContainer>
         </EditContainer>
         이름 {currentNameInfo} 나이 {currentAgeInfo}
