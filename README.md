@@ -1,35 +1,49 @@
-## styled-component를 사용한 이유
-> 컴포넌트 단위로 캡슐화하여 유지보수가 쉽고, <br> 이벤트에 따른 조건부 스타일링을 구현하기 편리하기 때문입니다
-
 ## 자세한 실행 방법
 
 
     
 ## 1. Toggle
 ### 구현한 방법과 이유에 대한 간략한 내용
-> Toggle의 switch on, off에 따른 상태를 정의하고, <br> 상태에 따라 조건부 스타일링을 주었습니다.
+> Toggle의 switch on/off에 따른 상태를 정의하고, <br> on/off 상태에 따라 조건부 스타일링을 주었습니다.
 > ![toggle기능](https://user-images.githubusercontent.com/84559872/152782161-deb8100e-5f41-4fc5-b91e-368e0ed09bf6.gif)
 
 ### 구현하면서 어려웠던 점과 해결 방법 (Error Handling Log)
 > Toggle의 transition 효과를 구현하는데 어려움을 겪었습니다. <br>
-> 예시에서는 switch의 on/off에 따라 background-color가 왼쪽에서 부터 오른쪽으로 채워졌습니다. <br>
-> ![codestates_toggle](https://user-images.githubusercontent.com/84559872/152099443-d19cc57e-b372-49b0-bc5f-0966ca310b1d.gif) <br>
+> 예시에서는 switch의 on/off에 따라 Toggle의 background-color가 왼쪽에서부터 오른쪽으로 차차 채워졌습니다. <br>
 > 채워지는 효과를 구현하기 위해서 css3의 animation을 이용해보기로 했으나 쉽게 방법을 찾지 못했습니다. <br>
-> 방법을 검색해보던 중 animation 대신에 box-shadow를 이용하는 예시를 찾았고 적용하여 해결하고자 했습니다.
-> <pre><code>{ box-shadow: 100px 0 0 0 #000080 inset;}</code></pre>
-> 하지만 해당 코드는 box-shadow에도 border-radius가 적용되어 있어 요구하는 효과를 완벽히 반영하지 못했습니다.
-> 더 완벽한 구현을 위하여 검색을 진행하였고, linear-gradient를 사용하는 방법을 찾을 수 있었습니다.
+> 방법을 검색해보던 중 linear-gradient를 이용하는 예시를 찾을 수 있었습니다. 
+><pre><code> background: ${(props) =>
+>   props.isToggleOn
+>     ? "linear-gradient(to right, #4a19cd 50%, #dcdcdc 50%) left"
+>     : "linear-gradient(to right, #4a19cd 50%, #dcdcdc 50%) right"};</code></pre>
+> props의 Boolean값에 따라 linear-gradient 값을 다르게 주어 해결할 수 있었습니다.
 
 ## 2. Modal
-> modal on, off에 따른 상태를 정의하고, <br> stopPropagation 메서드를 사용하여 이벤트 버블링 전파를 방지하여 modal close 클릭 이벤트 영역을 설정하였습니다.<br>
+> Modal의 on/off에 따른 상태를 정의하고, <br> stopPropagation 메서드를 사용하여 이벤트 버블링 전파를 방지하여 클릭시 Modal이 닫히는 영역을 설정했습니다.<br>
 > ![modal기능](https://user-images.githubusercontent.com/84559872/152782220-c09132ed-7086-45bc-8dff-f869d47ba174.gif)<br>
 
 ### 구현하면서 어려웠던 점과 해결 방법 (Error Handling Log)
-
+> Modal 창을 중앙에 고정시키는 방법을 찾는 것이 어려웠습니다.
+><pre><code>position: fixed;
+> top: 50%;
+> left: 50%;
+> transform: translate(-50%, -50%); </code></pre>
+> position 속성은 fixed, top과 left 속성에 각각 50%를 부여하고 translate 속성의 x축에 -50%, y축에 -50%를 주어 Modal 창을 정중앙에 위치시킬 수 있었습니다.
 ## 3. Tab
 > 클릭한 Tap에 따른 상태를 정의하고 <br> 클릭한 Tap, 클릭하지 않은 나머지 Tap에 따른 조건부 스타일링을 주었습니다.<br>
 > ![tap기능](https://user-images.githubusercontent.com/84559872/152782240-0f55dbf5-c1a2-4d9d-ad99-dcc674bf13d0.gif)<br>
 ### 구현하면서 어려웠던 점과 해결 방법 (Error Handling Log)
+> 여러 tab의 변화를 동시에 주기 위해서 map 메서드를 사용하였습니다. <br>
+> 클릭한 tab의 index를 상태값에 담은 후, 해당 index에만 클릭된 효과를 주고 나머지에는 클릭되지 않은 효과를 줄 수 있도록 하였습니다.
+><pre><code> {tabs.map((tab, index) => {
+>            return (
+>           ...
+>               onClick={() => controlClickedButton(index)}
+>           ...
+>            );
+>          })}
+> </code></pre>
+
 ## 4. Tag
 > 작성한 Tag를 담을 배열, input에 적힌 text를 각각 상태로 정의했습니다. <br>
 > keyCode를 사용하여 enter를 눌렀을 때를 인식하고 Tag가 새로 추가되도록 하였습니다. <br>
