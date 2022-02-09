@@ -20,11 +20,11 @@
 ### 구현하면서 어려웠던 점과 해결 방법 (Error Handling Log)
 
 > Toggle의 transition 효과를 구현하는데 어려움을 겪었습니다. <br>
-> 예시에서는 switch의 on/off에 따라 Toggle의 background-color가 왼쪽에서부터 오른쪽으로 차차 채워졌습니다. <br>
-> 채워지는 효과를 구현하기 위해서 방법을 검색해보던 중 linear-gradient를 이용하는 예시를 찾을 수 있었습니다.
+> 예시에서는 switch의 on/off에 따라 Toggle의 background-color가 왼쪽에서부터 오른쪽으로 선형적으로 채워졌습니다. <br>
+> 예시처럼 채워지는 효과를 구현하기 위해서 방법을 검색해보던 중 linear-gradient를 이용하는 예시를 찾을 수 있었습니다.
 >
 > <pre><code> background: ${(props) =>
->   props.isToggleOn
+>   props.checked
 >     ? "linear-gradient(to right, #4a19cd 50%, #dcdcdc 50%) left"
 >     : "linear-gradient(to right, #4a19cd 50%, #dcdcdc 50%) right"};</code></pre>
 >
@@ -46,7 +46,7 @@
 > left: 50%;
 > transform: translate(-50%, -50%); </code></pre>
 >
-> position 속성은 fixed, top과 left 속성에 각각 50%를 부여하고 translate 속성의 x축에 -50%, y축에 -50%를 주어 Modal 창을 정중앙에 위치시킬 수 있었습니다.
+> position 속성은 fixed, top과 left 속성에 각각 50%를 부여하고 다시 translate 속성의 x축에 -50%, y축에 -50%를 줌으로써 Modal 창을 정중앙에 위치시킬 수 있었습니다.
 
 ## 3. Tab
 
@@ -63,7 +63,7 @@
 > <pre><code> {tabs.map((tab, index) => {
 >            return (
 >           ...
->               onClick={() => controlClickedButton(index)}
+>               onClick={() => handleTab(index)}
 >           ...
 >            );
 >          })}
@@ -80,21 +80,21 @@
 
 ### 구현하면서 어려웠던 점과 해결 방법 (Error Handling Log)
 
-> 여러 Tag중 x를 클릭한 Tag만 삭제시키기 위해서 map 메서드를 사용했습니다. <br>
+> 여러 tag중 x(닫기)를 클릭한 tag만 삭제시키기 위해서 map 메서드를 사용했습니다. <br>
 > removeTag라는 함수에 해당 index를 인자로 넣어주고,
 >
-> <pre><code>{Tags.map((Tag, index) => (
+> <pre><code>{tags.map((tag, index) => (
 >  ...            
 >  onClick={() => removeTag(index)}>
 >  ...               
 >  )}
 > </code></pre>
 >
-> 해당 함수 내에서 x가 클릭된 Tag의 index를 제거하기 위해 splice 메서드를 사용하였습니다.
+> 해당 함수 내에서 x(닫기)가 클릭된 tag의 index를 제거하기 위해 splice 메서드를 사용하였습니다.
 >
 > <pre><code>const removeTag = (index) => {
->  let currentTagsCopy = currentTags.slice();
->  currentTagsCopy.splice(index, 1);
+>  let tagsCopy = [...tags];
+>  tagsCopy.splice(index, 1);
 >  ...
 >  }
 > </code></pre>
@@ -111,11 +111,11 @@
 
 > 자동완성 검색 기능을 구현하기 위해 includes 메서드를 사용했습니다. <br>
 > includes 메서드는 배열 뿐만 아니라 문자열 내 요소들도 포함하고 있는지 판별할 수 있기 때문입니다.<br>
-> 소문자, 대문자 상관없이 검색되기 위해서 if문 안에서는 데이터와 검색 대상을 toLowerCase를 통해 소문자로 일괄시켰습니다.
+> 소문자, 대문자 상관없이 검색되기 위해서 데이터와 검색 대상을 toLowerCase 메서드를 통해 소문자로 변환시켜 핸들링 하였습니다.
 >
-> <pre><code>{data.map((data, index) => {
+> <pre><code>{suggestions.map((suggestion, index) => {
 >  ...            
->  if (data.toLowerCase().includes(inputText.toLowerCase())) {
+>  if (suggestion.toLowerCase().includes(text.toLowerCase())) {
 >  ...               
 >  )}
 > </code></pre>
@@ -129,6 +129,6 @@
 
 ### 구현하면서 어려웠던 점과 해결 방법 (Error Handling Log)
 
-> input에서 focus가 사라졌을 때 편집이 되기 위해서 onBlur 이벤트를 활용했습니다. <br>
-> Blur가 되었을 때, input 내 text값을 변경시켰습니다. <br>
+> 예시를 구현하기 위해, onBlur 이벤트를 활용하였습니다.<br>
+> input의 focus가 사라지고 blur가 되었을 때, input 내 text값을 변경시키도록 하였습니다. <br>
 > 
