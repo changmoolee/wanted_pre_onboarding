@@ -1,3 +1,4 @@
+<br><br>
 ## 자세한 실행 방법
 
 1. git clone 명령어를 통해 로컬에 git 저장소를 복제합니다.
@@ -9,6 +10,7 @@ cd custom-component</code></pre>
 <pre><code>npm install</code></pre>
 4. npm start 명령어를 입력하여 실행합니다.
 <pre><code>npm start</code></pre>
+<br><br><br>
 
 ## 1. Toggle
 
@@ -28,7 +30,7 @@ Toggle의 transition 효과를 구현하는데 어려움을 겪었습니다. <br
      : "linear-gradient(to right, #4a19cd 50%, #dcdcdc 50%) right"};</code></pre>
 
  props의 Boolean값에 따라 linear-gradient 값을 다르게 주어 해결할 수 있었습니다.
-
+<br><br><br>
 ## 2. Modal
 
 ### 구현한 방법과 이유에 대한 간략한 내용
@@ -46,7 +48,7 @@ Toggle의 transition 효과를 구현하는데 어려움을 겪었습니다. <br
  transform: translate(-50%, -50%); </code></pre>
 
  position 속성은 fixed, top과 left 속성에 각각 50%를 부여하고 다시 translate 속성의 x축에 -50%, y축에 -50%를 줌으로써 Modal 창을 정중앙에 위치시킬 수 있었습니다.
-
+<br><br><br>
 ## 3. Tab
 
 ### 구현한 방법과 이유에 대한 간략한 내용
@@ -67,7 +69,7 @@ Toggle의 transition 효과를 구현하는데 어려움을 겪었습니다. <br
             );
           })}
  </code></pre>
-
+<br><br><br>
 ## 4. Tag
 
 ### 구현한 방법과 이유에 대한 간략한 내용
@@ -97,7 +99,7 @@ Toggle의 transition 효과를 구현하는데 어려움을 겪었습니다. <br
   ...
   }
  </code></pre>
-
+<br><br><br>
 ## 5. AutoComplete
 
 ### 구현한 방법과 이유에 대한 간략한 내용
@@ -118,7 +120,7 @@ Toggle의 transition 효과를 구현하는데 어려움을 겪었습니다. <br
   ...               
   )}
  </code></pre>
-
+<br><br><br>
 ## 6. ClickToEdit
 
 ### 구현한 방법과 이유에 대한 간략한 내용
@@ -130,4 +132,4 @@ Toggle의 transition 효과를 구현하는데 어려움을 겪었습니다. <br
 
  예시를 구현하기 위해, onBlur 이벤트를 활용하였습니다.<br>
  input의 focus가 사라지고 blur가 되었을 때, input 내 text값을 변경시키도록 하였습니다. <br>
- 
+ <br><br>
