@@ -5,7 +5,9 @@
 > 2. 다운 받은 파일로 이동하여 custom-component 파일로 접근합니다.
 > <pre><code>cd wanted_pr_onboarding
 > cd custom-component</code></pre>
-> 3. npm start 명령어를 입력합니다.
+> 3. npm install 명령어를 입력하여 다운로드합니다.
+> <pre><code>npm install</code></pre>
+> 4. npm start 명령어를 입력합니다.
 > <pre><code>npm start</code></pre>
 
 ## 1. Toggle
