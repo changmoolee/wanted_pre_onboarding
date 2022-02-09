@@ -1,13 +1,13 @@
 ## 자세한 실행 방법
 
-> 1. git clone 을 통해 로컬에 다운 받습니다.
+> 1. git clone 명령어를 통해 로컬에 git 저장소를 복제합니다.
 > <pre><code>git clone https://github.com/changmoolee/wanted_pre_onboarding.git</code></pre>
-> 2. 다운 받은 파일로 이동하여 custom-component 파일로 접근합니다.
+> 2. 다운 받은 폴더로 이동한 후, custom-component 파일로 접근합니다.
 > <pre><code>cd wanted_pr_onboarding
 > cd custom-component</code></pre>
-> 3. npm install 명령어를 입력하여 다운로드합니다.
+> 3. npm install 명령어를 입력하여 모듈들을 다운로드합니다.
 > <pre><code>npm install</code></pre>
-> 4. npm start 명령어를 입력합니다.
+> 4. npm start 명령어를 입력하여 실행합니다.
 > <pre><code>npm start</code></pre>
 
 ## 1. Toggle
