@@ -1,24 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { FeatureContainer } from "./layout/layout";
+import { Feature } from "./layout/layout";
 
-const FeatureContainer = styled.div`
-  width: 80vw;
-  height: 30vh;
-  border: 1px black solid;
-  margin-top: 5vh;
-  padding: 20px;
-  font-size: 24px;
-  border-radius: 20px;
-`;
-const Feature = styled.div`
-  width: 100%;
-  height: 80%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  font-size: 16px;
-`;
 const TabContainer = styled.div`
   width: 100%;
   height: 30%;

@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { FeatureContainer } from "./layout/layout";
+import { Feature } from "./layout/layout";
 
 const Wrapper = styled.div`
   position: fixed;
@@ -48,22 +50,6 @@ const ModalTextContainer = styled.div`
   font-size: 24px;
 `;
 
-const FeatureContainer = styled.div`
-  width: 80vw;
-  height: 30vh;
-  margin-top: 5vh;
-  padding: 20px;
-  font-size: 24px;
-  border-radius: 20px;
-  border: 1px solid black;
-`;
-const Feature = styled.div`
-  width: 100%;
-  height: 80%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
 const ModalButton = styled.div`
   width: 120px;
   height: 60px;
