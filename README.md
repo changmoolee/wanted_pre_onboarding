@@ -1,6 +1,11 @@
 ## 자세한 실행 방법
-
-
+> 1. git clone 을 통해 로컬에 다운 받습니다.
+> <pre><code>git clone https://github.com/changmoolee/wanted_pre_onboarding.git</code></pre>
+> 2. 다운 받은 파일로 이동하여 custom-component 파일로 접근합니다.
+> <pre><code>cd wanted_pr_onboarding
+> cd custom-component</code></pre>
+> 3. npm start 명령어를 입력합니다.
+> <pre><code>npm start</code></pre>
     
 ## 1. Toggle
 ### 구현한 방법과 이유에 대한 간략한 내용
@@ -10,8 +15,7 @@
 ### 구현하면서 어려웠던 점과 해결 방법 (Error Handling Log)
 > Toggle의 transition 효과를 구현하는데 어려움을 겪었습니다. <br>
 > 예시에서는 switch의 on/off에 따라 Toggle의 background-color가 왼쪽에서부터 오른쪽으로 차차 채워졌습니다. <br>
-> 채워지는 효과를 구현하기 위해서 css3의 animation을 이용해보기로 했으나 쉽게 방법을 찾지 못했습니다. <br>
-> 방법을 검색해보던 중 linear-gradient를 이용하는 예시를 찾을 수 있었습니다. 
+> 채워지는 효과를 구현하기 위해서 방법을 검색해보던 중 linear-gradient를 이용하는 예시를 찾을 수 있었습니다. 
 ><pre><code> background: ${(props) =>
 >   props.isToggleOn
 >     ? "linear-gradient(to right, #4a19cd 50%, #dcdcdc 50%) left"
