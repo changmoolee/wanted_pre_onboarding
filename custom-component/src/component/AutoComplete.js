@@ -28,7 +28,7 @@ const AutoCompleteContainer = styled.div`
   flex-direction: column;
   align-items: center;
   box-shadow: ${(props) =>
-    props.inputText === "" ? "none" : "0px 3px 3px 3px rgba(0, 0, 0, 0.1)"};
+    props.comboBoxOpened ? "0px 3px 3px 3px rgba(0, 0, 0, 0.1)" : "none"};
   border-radius: 10px;
 `;
 
@@ -72,10 +72,11 @@ const AutoCompleteCloseIcon = styled.div`
 
 const SearchResultCollection = styled.ul`
   width: 100%;
-  display: ${(props) => (props.inputText === "" ? "none" : "flex")};
+  display: ${(props) => (props.comboBoxOpened ? "flex" : "none")};
   flex-direction: column;
   padding: 0px;
   margin: 5px 0px 5px 0px;
+  background: white;
 `;
 const SearchResult = styled.li`
   width: 98%;
@@ -90,6 +91,7 @@ const SearchResult = styled.li`
 
 const AutoComplete = () => {
   const [inputText, setInputText] = useState("");
+  const [comboBoxOpened, setComboBoxOpended] = useState(false);
   const data = [
     "중고A급",
     "refurbished",
@@ -107,33 +109,37 @@ const AutoComplete = () => {
     setInputText("");
   };
 
-  const clickedPreviousData = (text) => {
-    return setInputText(text);
-  };
-
   return (
     <FeatureContainer>
       AutoComplete
       <Feature>
         <FeatureSpace />
-        <AutoCompleteContainer inputText={inputText}>
+        <AutoCompleteContainer comboBoxOpened={comboBoxOpened}>
           <AutoCompleteInputContainer>
             <AutoCompleteInput
               placeholder="Please browse here"
               value={inputText}
+              onFocus={() => setComboBoxOpended(true)}
+              onBlur={() => setComboBoxOpended(false)}
               onChange={(e) => currentInputText(e)}
             ></AutoCompleteInput>
             <AutoCompleteCloseIcon onClick={() => eraseInput()}>
               &times;
             </AutoCompleteCloseIcon>
           </AutoCompleteInputContainer>
-          <SearchResultCollection inputText={inputText}>
+          <SearchResultCollection comboBoxOpened={comboBoxOpened}>
             {data.map((data, index) => {
-              if (data.toLowerCase().includes(inputText.toLowerCase())) {
+              if (
+                data.toLowerCase().includes(inputText.toLowerCase()) &&
+                comboBoxOpened &&
+                inputText !== ""
+              ) {
                 return (
                   <SearchResult
                     key={index}
-                    onClick={() => clickedPreviousData(data)}
+                    onMouseDown={() => {
+                      setInputText(data);
+                    }}
                   >
                     {data}
                   </SearchResult>
