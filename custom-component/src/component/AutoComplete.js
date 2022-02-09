@@ -91,7 +91,7 @@ const Suggestion = styled.li`
 
 const AutoComplete = () => {
   const [text, setText] = useState("");
-  const [suggestionOpened, setsuggestionOpended] = useState(false);
+  const [suggestionOpened, setSuggestionOpended] = useState(false);
   const suggestions = [
     "중고A급",
     "refurbished",
@@ -105,10 +105,10 @@ const AutoComplete = () => {
     setText(e.target.value);
   };
   const openSuggestion = () => {
-    setsuggestionOpended(true);
+    setSuggestionOpended(true);
   };
   const closeSuggestion = () => {
-    setsuggestionOpended(false);
+    setSuggestionOpended(false);
   };
   const eraseInput = () => {
     setText("");
