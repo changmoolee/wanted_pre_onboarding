@@ -27,7 +27,7 @@ const ToggleContainer = styled.div`
   margin-bottom: 10px;
   cursor: pointer;
 `;
-const ToggleContainerShadow = styled.div`
+const Shadow = styled.div`
   width: 80px;
   height: 40px;
   display: flex;
@@ -37,44 +37,41 @@ const ToggleContainerShadow = styled.div`
   border-radius: 20px;
   background: #dcdcdc;
   background: ${(props) =>
-    props.isToggleOn
+    props.checked
       ? "linear-gradient(to right, #4a19cd 50%, #dcdcdc 50%) left"
       : "linear-gradient(to right, #4a19cd 50%, #dcdcdc 50%) right"};
   background-size: 200%;
   transition: 0.3s;
 `;
 
-const ToggleBall = styled.div`
+const Ball = styled.div`
   position: relative;
   width: 30px;
   height: 30px;
   transform: ${(props) =>
-    props.isToggleOn ? "translate(45px ,0%)" : "translate(5px ,0%)"};
+    props.checked ? "translate(45px ,0%)" : "translate(5px ,0%)"};
   border-radius: 50px;
   background-color: white;
   transition: 0.3s;
 `;
 
 const Toggle = () => {
-  const [isToggleOn, setToggle] = useState(false);
+  const [checked, setChecked] = useState(false);
 
-  const controlToggle = () => {
-    return setToggle(!isToggleOn);
+  const handleToggle = () => {
+    setChecked((checked) => !checked);
   };
 
   return (
     <FeatureContainer>
       Toggle
       <Feature>
-        <ToggleContainer
-          onClick={() => controlToggle()}
-          isToggleOn={isToggleOn}
-        >
-          <ToggleContainerShadow isToggleOn={isToggleOn}>
-            <ToggleBall isToggleOn={isToggleOn}></ToggleBall>
-          </ToggleContainerShadow>
+        <ToggleContainer onClick={handleToggle} checked={checked}>
+          <Shadow checked={checked}>
+            <Ball checked={checked}></Ball>
+          </Shadow>
         </ToggleContainer>
-        {isToggleOn ? "Toggle Switch ON" : "Toggle Switch OFF"}
+        {checked ? "Toggle Switch ON" : "Toggle Switch OFF"}
       </Feature>
     </FeatureContainer>
   );
