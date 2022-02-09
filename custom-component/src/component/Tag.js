@@ -17,13 +17,14 @@ const Feature = styled.div`
   justify-content: center;
   align-items: center;
 `;
-const TagContainer = styled.div`
-  width: 60%;
-  height: 30%;
+const Container = styled.div`
+  width: 800px;
+  height: 50px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   border: 1px black solid;
+  overflow: overlay;
 `;
 const TagInput = styled.input`
   width: 100%;
@@ -51,58 +52,58 @@ const TagTextElement = styled.div`
   font-size: 16px;
   margin-left: 5px;
 `;
-const CloseIconDiv = styled.div`
+const IconContainer = styled.div`
   display: inline-block;
   margin-left: 5px;
   margin-right: 5px;
 `;
-const CloseIconImg = styled.img`
+const CloseIcon = styled.img`
   width: 20px;
   object-fit: cover;
 `;
 
 //icon에만 색깔 입힐 방법은?
 const Tag = () => {
-  const [currentTags, setCurrentTags] = useState([]);
-  const [TagText, setTagText] = useState("");
+  const [tags, setTags] = useState([]);
+  const [tagText, setTagText] = useState("");
 
   const addTag = (tag) => {
     if (tag !== "") {
-      return setCurrentTags([...currentTags, tag]);
+      return setTags([...tags, tag]);
     }
   };
   const removeTag = (index) => {
-    let currentTagsCopy = currentTags.slice();
-    currentTagsCopy.splice(index, 1);
-    return setCurrentTags([...currentTagsCopy]);
+    let tagsCopy = [...tags];
+    tagsCopy.splice(index, 1);
+    return setTags([...tagsCopy]);
   };
-  const onChangeTagText = (text) => setTagText(text);
+  const onChangeTagText = (e) => setTagText(e.target.value);
 
   return (
     <FeatureContainer>
       Tag
       <Feature>
-        <TagContainer>
-          {currentTags.map((currentTag, index) => (
+        <Container>
+          {tags.map((tag, index) => (
             <TagDiv key={index}>
-              <TagTextElement>{currentTag}</TagTextElement>
-              <CloseIconDiv onClick={() => removeTag(index)}>
-                <CloseIconImg src="./delete.png" />
-              </CloseIconDiv>
+              <TagTextElement>{tag}</TagTextElement>
+              <IconContainer onClick={() => removeTag(index)}>
+                <CloseIcon src="./delete.png" />
+              </IconContainer>
             </TagDiv>
           ))}
           <TagInput
+            value={tagText}
+            placeholder="Please enter to add Tags"
             onKeyPress={(e) => {
               if (e.key === "Enter") {
                 addTag(e.target.value);
                 setTagText("");
               }
             }}
-            onChange={(e) => onChangeTagText(e.target.value)}
-            value={TagText}
-            placeholder="Please enter to add Tags"
+            onChange={(e) => onChangeTagText(e)}
           />
-        </TagContainer>
+        </Container>
       </Feature>
     </FeatureContainer>
   );

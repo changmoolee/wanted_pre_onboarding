@@ -18,30 +18,24 @@ const Feature = styled.div`
   justify-content: center;
   align-items: center;
 `;
-const EditContainer = styled.div`
-  width: 30%;
-  height: 60%;
+const Container = styled.div`
+  width: 400px;
+  height: 200px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   font-size: 20px;
 `;
-const EditNameContainer = styled.div`
+const EditContainer = styled.div`
   width: 100%;
   height: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
 `;
-const EditAgeContainer = styled.div`
-  width: 100%;
-  height: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-const EditInput = styled.input`
+
+const Input = styled.input`
   width: 60%;
   height: 50%;
   text-align: center;
@@ -52,37 +46,31 @@ const EditInput = styled.input`
 `;
 
 const ClickToEdit = () => {
-  const [currentNameInfo, setNameInfo] = useState("김코딩");
-  const [currentAgeInfo, setAgeInfo] = useState("20");
+  const [name, setName] = useState("김코딩");
+  const [age, setAge] = useState(20);
 
-  const editNameInfo = (text) => {
-    setNameInfo(text);
+  const editName = (e) => {
+    setName(e.target.value);
   };
-  const editAgeInfo = (text) => {
-    setAgeInfo(text);
+  const editAge = (e) => {
+    setAge(e.target.value);
   };
 
   return (
     <FeatureContainer>
       ClickToEdit
       <Feature>
-        <EditContainer>
-          <EditNameContainer>
+        <Container>
+          <EditContainer>
             이름
-            <EditInput
-              defaultValue={currentNameInfo}
-              onBlur={(e) => editNameInfo(e.target.value)}
-            />
-          </EditNameContainer>
-          <EditAgeContainer>
+            <Input defaultValue={name} onBlur={(e) => editName(e)} />
+          </EditContainer>
+          <EditContainer>
             나이
-            <EditInput
-              defaultValue={currentAgeInfo}
-              onBlur={(e) => editAgeInfo(e.target.value)}
-            />
-          </EditAgeContainer>
-        </EditContainer>
-        이름 {currentNameInfo} 나이 {currentAgeInfo}
+            <Input defaultValue={age} onBlur={(e) => editAge(e)} />
+          </EditContainer>
+        </Container>
+        이름 {name} 나이 {age}
       </Feature>
     </FeatureContainer>
   );

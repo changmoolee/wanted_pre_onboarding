@@ -24,13 +24,13 @@ const ModalContainer = styled.div`
   border-radius: 20px;
   z-index: 1;
 `;
-const ModalIconContainer = styled.div`
+const IconContainer = styled.div`
   display: flex;
   justify-content: center;
   width: 100%;
   height: 15%;
 `;
-const ModalIcon = styled.div`
+const Icon = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -78,18 +78,20 @@ const ModalButton = styled.div`
 `;
 
 const Modal = () => {
-  const [isModalOpen, setModalOpen] = useState(false);
+  const [open, setOpen] = useState(false);
+
+  const handleModal = () => {
+    setOpen((open) => !open);
+  };
 
   return (
     <>
-      {isModalOpen ? (
-        <Wrapper onClick={() => setModalOpen(!isModalOpen)}>
+      {open ? (
+        <Wrapper onClick={handleModal}>
           <ModalContainer onClick={(e) => e.stopPropagation()}>
-            <ModalIconContainer>
-              <ModalIcon onClick={() => setModalOpen(!isModalOpen)}>
-                &times;
-              </ModalIcon>
-            </ModalIconContainer>
+            <IconContainer>
+              <Icon onClick={handleModal}>&times;</Icon>
+            </IconContainer>
             <ModalTextContainer>Hello CodeStates!</ModalTextContainer>
           </ModalContainer>
         </Wrapper>
@@ -97,9 +99,7 @@ const Modal = () => {
       <FeatureContainer>
         Modal
         <Feature>
-          <ModalButton onClick={() => setModalOpen(!isModalOpen)}>
-            Open Modal
-          </ModalButton>
+          <ModalButton onClick={handleModal}>Open Modal</ModalButton>
         </Feature>
       </FeatureContainer>
     </>

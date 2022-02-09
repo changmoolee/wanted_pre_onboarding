@@ -35,21 +35,21 @@ const TabButton = styled.div`
   justify-content: flex-start;
   align-items: center;
   font-size: 16px;
-  color: ${(props) => (props.index === props.clickedButton ? "white" : "gray")};
+  color: ${(props) => (props.index === props.tabIndex ? "white" : "gray")};
   background-color: ${(props) =>
-    props.index === props.clickedButton ? "#4a19cd" : "#dcdcdc"};
+    props.index === props.tabIndex ? "#4a19cd" : "#dcdcdc"};
   transition: 0.3s;
   cursor: pointer;
 `;
 
 const Tab = () => {
-  const tabCollection = ["Tab1", "Tab2", "Tab3"];
-  const tabMenu = ["ONE", "TWO", "THREE"];
+  const tabs = ["Tab1", "Tab2", "Tab3"];
+  const tabNumber = ["ONE", "TWO", "THREE"];
 
-  const [clickedButton, setClickedButton] = useState(0);
+  const [tabIndex, setTabIndex] = useState(0);
 
-  const controlClickedButton = (index) => {
-    setClickedButton(index);
+  const handleTab = (index) => {
+    setTabIndex(index);
   };
 
   return (
@@ -57,20 +57,20 @@ const Tab = () => {
       Tab
       <Feature>
         <TabContainer>
-          {tabCollection.map((tab, index) => {
+          {tabs.map((tab, index) => {
             return (
               <TabButton
-                clickedButton={clickedButton}
-                index={index}
                 key={index}
-                onClick={() => controlClickedButton(index)}
+                tabIndex={tabIndex}
+                index={index}
+                onClick={() => handleTab(index)}
               >
                 &nbsp;&nbsp;{tab}
               </TabButton>
             );
           })}
         </TabContainer>
-        Tab menu {tabMenu[clickedButton]}
+        Tab menu {tabNumber[tabIndex]}
       </Feature>
     </FeatureContainer>
   );

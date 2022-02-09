@@ -22,17 +22,17 @@ const FeatureSpace = styled.div`
   min-height: 40%;
 `;
 
-const AutoCompleteContainer = styled.div`
+const Container = styled.div`
   width: 70%;
   display: flex;
   flex-direction: column;
   align-items: center;
   box-shadow: ${(props) =>
-    props.comboBoxOpened ? "0px 3px 3px 3px rgba(0, 0, 0, 0.1)" : "none"};
+    props.suggestionOpened ? "0px 3px 3px 3px rgba(0, 0, 0, 0.1)" : "none"};
   border-radius: 10px;
 `;
 
-const AutoCompleteInputContainer = styled.div`
+const InputContainer = styled.div`
   width: 100%;
   height: 25px;
   display: flex;
@@ -43,7 +43,7 @@ const AutoCompleteInputContainer = styled.div`
   margin-top: -1px;
 `;
 
-const AutoCompleteInput = styled.input`
+const Input = styled.input`
   width: 95%;
   height: 90%;
   display: flex;
@@ -59,7 +59,7 @@ const AutoCompleteInput = styled.input`
   }
 `;
 
-const AutoCompleteCloseIcon = styled.div`
+const CloseIcon = styled.div`
   width: 5%;
   height: 95%;
   display: flex;
@@ -70,15 +70,15 @@ const AutoCompleteCloseIcon = styled.div`
   border-radius: 10px;
 `;
 
-const SearchResultCollection = styled.ul`
+const SuggestionsContainer = styled.ul`
   width: 100%;
-  display: ${(props) => (props.comboBoxOpened ? "flex" : "none")};
+  display: ${(props) => (props.suggestionOpened ? "flex" : "none")};
   flex-direction: column;
   padding: 0px;
   margin: 5px 0px 5px 0px;
   background: white;
 `;
-const SearchResult = styled.li`
+const Suggestion = styled.li`
   width: 98%;
   display: flex;
   margin: 2px 0px 2px 5px;
@@ -90,9 +90,9 @@ const SearchResult = styled.li`
 `;
 
 const AutoComplete = () => {
-  const [inputText, setInputText] = useState("");
-  const [comboBoxOpened, setComboBoxOpended] = useState(false);
-  const data = [
+  const [text, setText] = useState("");
+  const [suggestionOpened, setsuggestionOpended] = useState(false);
+  const suggestions = [
     "중고A급",
     "refurbished",
     "antique",
@@ -102,11 +102,16 @@ const AutoComplete = () => {
   ];
 
   const currentInputText = (e) => {
-    setInputText(e.target.value);
+    setText(e.target.value);
   };
-
+  const openSuggestion = () => {
+    setsuggestionOpended(true);
+  };
+  const closeSuggestion = () => {
+    setsuggestionOpended(false);
+  };
   const eraseInput = () => {
-    setInputText("");
+    setText("");
   };
 
   return (
@@ -114,42 +119,40 @@ const AutoComplete = () => {
       AutoComplete
       <Feature>
         <FeatureSpace />
-        <AutoCompleteContainer comboBoxOpened={comboBoxOpened}>
-          <AutoCompleteInputContainer>
-            <AutoCompleteInput
+        <Container suggestionOpened={suggestionOpened}>
+          <InputContainer>
+            <Input
               placeholder="Please browse here"
-              value={inputText}
-              onFocus={() => setComboBoxOpended(true)}
-              onBlur={() => setComboBoxOpended(false)}
+              value={text}
+              onFocus={openSuggestion}
+              onBlur={closeSuggestion}
               onChange={(e) => currentInputText(e)}
-            ></AutoCompleteInput>
-            <AutoCompleteCloseIcon onClick={() => eraseInput()}>
-              &times;
-            </AutoCompleteCloseIcon>
-          </AutoCompleteInputContainer>
-          <SearchResultCollection comboBoxOpened={comboBoxOpened}>
-            {data.map((data, index) => {
+            />
+            <CloseIcon onClick={eraseInput}>&times;</CloseIcon>
+          </InputContainer>
+          <SuggestionsContainer suggestionOpened={suggestionOpened}>
+            {suggestions.map((suggestion, index) => {
               if (
-                data.toLowerCase().includes(inputText.toLowerCase()) &&
-                comboBoxOpened &&
-                inputText !== ""
+                suggestion.toLowerCase().includes(text.toLowerCase()) &&
+                suggestionOpened &&
+                text !== ""
               ) {
                 return (
-                  <SearchResult
+                  <Suggestion
                     key={index}
                     onMouseDown={() => {
-                      setInputText(data);
+                      setText(suggestion);
                     }}
                   >
-                    {data}
-                  </SearchResult>
+                    {suggestion}
+                  </Suggestion>
                 );
               } else {
                 return null;
               }
             })}
-          </SearchResultCollection>
-        </AutoCompleteContainer>
+          </SuggestionsContainer>
+        </Container>
       </Feature>
     </FeatureContainer>
   );
