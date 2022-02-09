@@ -17,6 +17,7 @@ const Feature = styled.div`
   flex-direction: column;
   align-items: center;
 `;
+
 const FeatureSpace = styled.div`
   width: 100%;
   min-height: 40%;
