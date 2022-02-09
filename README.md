@@ -1,36 +1,33 @@
 ## 자세한 실행 방법
 
-> 1. git clone 명령어를 통해 로컬에 git 저장소를 복제합니다.
-> <pre><code>git clone https://github.com/changmoolee/wanted_pre_onboarding.git</code></pre>
-> 2. 다운 받은 폴더로 이동한 후, custom-component 파일로 접근합니다.
-> <pre><code>cd wanted_pr_onboarding
-> cd custom-component</code></pre>
-> 3. npm install 명령어를 입력하여 모듈들을 다운로드합니다.
-> <pre><code>npm install</code></pre>
-> 4. npm start 명령어를 입력하여 실행합니다.
-> <pre><code>npm start</code></pre>
+1. git clone 명령어를 통해 로컬에 git 저장소를 복제합니다.
+<pre><code>git clone https://github.com/changmoolee/wanted_pre_onboarding.git</code></pre>
+2. 다운 받은 폴더로 이동한 후, custom-component 파일로 접근합니다.
+<pre><code>cd wanted_pr_onboarding
+cd custom-component</code></pre>
+3. npm install 명령어를 입력하여 모듈들을 다운로드합니다.
+<pre><code>npm install</code></pre>
+4. npm start 명령어를 입력하여 실행합니다.
+<pre><code>npm start</code></pre>
 
 ## 1. Toggle
 
 ### 구현한 방법과 이유에 대한 간략한 내용
-```
-asdasdas
-```
-> Toggle의 switch on/off에 따른 상태를 정의하고, <br> on/off 상태에 따라 조건부 스타일링을 주었습니다.
-> ![toggle기능](https://user-images.githubusercontent.com/84559872/152782161-deb8100e-5f41-4fc5-b91e-368e0ed09bf6.gif)
+Toggle의 switch on/off에 따른 상태를 정의하고, <br> on/off 상태에 따라 조건부 스타일링을 주었습니다.
+![toggle기능](https://user-images.githubusercontent.com/84559872/152782161-deb8100e-5f41-4fc5-b91e-368e0ed09bf6.gif)
 
 ### 구현하면서 어려웠던 점과 해결 방법 (Error Handling Log)
 
-> Toggle의 transition 효과를 구현하는데 어려움을 겪었습니다. <br>
-> 예시에서는 switch의 on/off에 따라 Toggle의 background-color가 왼쪽에서부터 오른쪽으로 선형적으로 채워졌습니다. <br>
-> 예시처럼 채워지는 효과를 구현하기 위해서 방법을 검색해보던 중 linear-gradient를 이용하는 예시를 찾을 수 있었습니다.
->
-> <pre><code> background: ${(props) =>
->   props.checked
->     ? "linear-gradient(to right, #4a19cd 50%, #dcdcdc 50%) left"
->     : "linear-gradient(to right, #4a19cd 50%, #dcdcdc 50%) right"};</code></pre>
->
-> props의 Boolean값에 따라 linear-gradient 값을 다르게 주어 해결할 수 있었습니다.
+Toggle의 transition 효과를 구현하는데 어려움을 겪었습니다. <br>
+예시에서는 switch의 on/off에 따라 Toggle의 background-color가 왼쪽에서부터 오른쪽으로 선형적으로 채워졌습니다. <br>
+예시처럼 채워지는 효과를 구현하기 위해서 방법을 검색해보던 중 linear-gradient를 이용하는 예시를 찾을 수 있었습니다.
+
+ <pre><code> background: ${(props) =>
+   props.checked
+     ? "linear-gradient(to right, #4a19cd 50%, #dcdcdc 50%) left"
+     : "linear-gradient(to right, #4a19cd 50%, #dcdcdc 50%) right"};</code></pre>
+
+ props의 Boolean값에 따라 linear-gradient 값을 다르게 주어 해결할 수 있었습니다.
 
 ## 2. Modal
 
