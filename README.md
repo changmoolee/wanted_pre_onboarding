@@ -50,15 +50,40 @@
 > 배열의 map메서드를 사용하여 x가 클릭된 Tag의 위치를 index로 파악하여 제거될 수 있도록 했습니다.<br>
 > ![tag기능](https://user-images.githubusercontent.com/84559872/152782279-1b88d6d9-328a-40e1-8acd-9945ffd5a54a.gif)<br>
 ### 구현하면서 어려웠던 점과 해결 방법 (Error Handling Log)
+> 여러 Tag중 x를 클릭한 Tag만 삭제시키기 위해서 map 메서드를 사용했습니다. <br>
+> removeTag라는 함수에 해당 index를 인자로 넣어주고,
+> <pre><code>{Tags.map((Tag, index) => (
+>  ...            
+>  onClick={() => removeTag(index)}>
+>  ...               
+>  )}
+> </code></pre>
+> 해당 함수 내에서 x가 클릭된 Tag의 index를 제거하기 위해 splice 메서드를 사용하였습니다.
+> <pre><code>const removeTag = (index) => {
+>  let currentTagsCopy = currentTags.slice();
+>  currentTagsCopy.splice(index, 1);
+>  ...
+>  }
+> </code></pre>
 ## 5. AutoComplete
 > input의 text 유무에 따른 상태를 정의하고 배열에 검색 데이터를 저장하였습니다. <br>
 > includes 메서드를 사용하여 배열 안에 자동검색 기능을 구현하고, map메서드를 사용하여 자동검색에 일치하는 요소의 index를 통해 리턴했습니다. <br>
 > ![autoComplete기능](https://user-images.githubusercontent.com/84559872/152782298-2b842a60-e4fe-4554-a93d-cf1960bfe687.gif)<br>
 ### 구현하면서 어려웠던 점과 해결 방법 (Error Handling Log)
+> 자동완성 검색 기능을 구현하기 위해 includes 메서드를 사용했습니다. <br>
+> includes 메서드는 배열 뿐만 아니라 문자열 내 요소들도 포함하고 있는지 판별할 수 있기 때문입니다.<br>
+> 소문자, 대문자 상관없이 검색되기 위해서 if문 안에서는 데이터와 검색 대상을 toLowerCase를 통해 소문자로 일괄시켰습니다.
+> <pre><code>{data.map((data, index) => {
+>  ...            
+>  if (data.toLowerCase().includes(inputText.toLowerCase())) {
+>  ...               
+>  )}
+> </code></pre>
 ## 6. ClickToEdit
 > input의 text를 상태로 정의하고, onBlur 이벤트를 통해 focus가 사라졌을 때 상태가 변하도록 구현했습니다. <br>
-> ![clickToEdit기능](https://user-images.githubusercontent.com/84559872/152782316-30590b24-062f-4ce9-9b31-1c066c1517a7.gif)<br>
+> ![clickToEdit기능](https://user-images.githubusercontent.com/84559872/153115008-2d2da676-f7e6-4e7a-9458-e948dca7238b.gif) <br>
 ### 구현하면서 어려웠던 점과 해결 방법 (Error Handling Log)
+> input에서 focus가 사라졌을 때 편집이 되기 위해서 onBlur 이벤트를 활용했습니다. <br>
+> Blur가 되었을 때, input 내 text값을 변경시켰습니다. <br>
 
-<br><br>
 
