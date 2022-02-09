@@ -23,6 +23,7 @@
 > props의 Boolean값에 따라 linear-gradient 값을 다르게 주어 해결할 수 있었습니다.
 
 ## 2. Modal
+### 구현한 방법과 이유에 대한 간략한 내용
 > Modal의 on/off에 따른 상태를 정의하고, <br> stopPropagation 메서드를 사용하여 이벤트 버블링 전파를 방지하여 클릭시 Modal이 닫히는 영역을 설정했습니다.<br>
 > ![modal기능](https://user-images.githubusercontent.com/84559872/152782220-c09132ed-7086-45bc-8dff-f869d47ba174.gif)<br>
 
@@ -34,6 +35,7 @@
 > transform: translate(-50%, -50%); </code></pre>
 > position 속성은 fixed, top과 left 속성에 각각 50%를 부여하고 translate 속성의 x축에 -50%, y축에 -50%를 주어 Modal 창을 정중앙에 위치시킬 수 있었습니다.
 ## 3. Tab
+### 구현한 방법과 이유에 대한 간략한 내용
 > 클릭한 Tap에 따른 상태를 정의하고 <br> 클릭한 Tap, 클릭하지 않은 나머지 Tap에 따른 조건부 스타일링을 주었습니다.<br>
 > ![tap기능](https://user-images.githubusercontent.com/84559872/152782240-0f55dbf5-c1a2-4d9d-ad99-dcc674bf13d0.gif)<br>
 ### 구현하면서 어려웠던 점과 해결 방법 (Error Handling Log)
@@ -49,6 +51,7 @@
 > </code></pre>
 
 ## 4. Tag
+### 구현한 방법과 이유에 대한 간략한 내용
 > 작성한 Tag를 담을 배열, input에 적힌 text를 각각 상태로 정의했습니다. <br>
 > keyCode를 사용하여 enter를 눌렀을 때를 인식하고 Tag가 새로 추가되도록 하였습니다. <br>
 > 배열의 map메서드를 사용하여 x가 클릭된 Tag의 위치를 index로 파악하여 제거될 수 있도록 했습니다.<br>
@@ -70,6 +73,7 @@
 >  }
 > </code></pre>
 ## 5. AutoComplete
+### 구현한 방법과 이유에 대한 간략한 내용
 > input의 text 유무에 따른 상태를 정의하고 배열에 검색 데이터를 저장하였습니다. <br>
 > includes 메서드를 사용하여 배열 안에 자동검색 기능을 구현하고, map메서드를 사용하여 자동검색에 일치하는 요소의 index를 통해 리턴했습니다. <br>
 > ![autoComplete기능](https://user-images.githubusercontent.com/84559872/152782298-2b842a60-e4fe-4554-a93d-cf1960bfe687.gif)<br>
@@ -84,6 +88,7 @@
 >  )}
 > </code></pre>
 ## 6. ClickToEdit
+### 구현한 방법과 이유에 대한 간략한 내용
 > input의 text를 상태로 정의하고, onBlur 이벤트를 통해 focus가 사라졌을 때 상태가 변하도록 구현했습니다. <br>
 > ![clickToEdit기능](https://user-images.githubusercontent.com/84559872/153115008-2d2da676-f7e6-4e7a-9458-e948dca7238b.gif) <br>
 ### 구현하면서 어려웠던 점과 해결 방법 (Error Handling Log)
